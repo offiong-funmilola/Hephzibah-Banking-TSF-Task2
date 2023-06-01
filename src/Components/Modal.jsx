@@ -3,11 +3,11 @@ import {useContext} from 'react'
 import CustomerContext from '../Context/CustomerContext'
 
 function Modal() {
-const {setIsOpen, isOpen, message} = useContext(CustomerContext);
+  const {setIsOpen, isOpen, message} = useContext(CustomerContext);
 
-const handleClose = (e) => {
-    setIsOpen(false)
-};
+  const handleClose = (e) => {
+      setIsOpen(false)
+  };
   return (
     <>
     <div className={`modal ${isOpen ? 'modal-open': ''}`}>
