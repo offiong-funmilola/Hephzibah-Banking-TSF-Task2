@@ -41,7 +41,7 @@ export const CustomerProvider = ({children}) => {
     unsub()
 
     return(
-        <CustomerContext.Provider value={{customers, setCustomers, setIsOpen, isOpen, message, setMessage, amount, setAmount, custInfo, setCustInfo, beneficiary, setBeneficiary, benId, setBenId, setTransferSuccess}}>
+        <CustomerContext.Provider value={{customers, setCustomers, setIsOpen, isOpen, message, setMessage, amount, setAmount, custInfo, setCustInfo, beneficiary, setBeneficiary, benId, setBenId, transferSuccess, setTransferSuccess}}>
             {children}
         </CustomerContext.Provider>
     )
