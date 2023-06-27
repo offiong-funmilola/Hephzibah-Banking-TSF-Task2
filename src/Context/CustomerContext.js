@@ -13,6 +13,7 @@ export const CustomerProvider = ({children}) => {
     const [custInfo, setCustInfo] = useState({id: '', name: '', account: {}})
     const [benId, setBenId] = useState('')
     const [transferSuccess, setTransferSuccess] = useState(false)
+    const [title, setTitle] = useState('')
 
     let currentCustomersList = [...customers]
     const unsub = onSnapshot(collection(database, "Users"), (snapshot) => {
@@ -41,7 +42,7 @@ export const CustomerProvider = ({children}) => {
     unsub()
 
     return(
-        <CustomerContext.Provider value={{customers, setCustomers, setIsOpen, isOpen, message, setMessage, amount, setAmount, custInfo, setCustInfo, beneficiary, setBeneficiary, benId, setBenId, transferSuccess, setTransferSuccess}}>
+        <CustomerContext.Provider value={{customers, setCustomers, setIsOpen, isOpen, message, setMessage, amount, setAmount, custInfo, setCustInfo, beneficiary, setBeneficiary, benId, setBenId, transferSuccess, setTransferSuccess, title, setTitle}}>
             {children}
         </CustomerContext.Provider>
     )

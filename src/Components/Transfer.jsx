@@ -9,14 +9,13 @@ import { doc, updateDoc, arrayUnion} from "firebase/firestore";
 
 function Transfer() {
   const navigate = useNavigate()
-  const {customers, custInfo, setIsOpen, setMessage, amount, setAmount, setBeneficiary, beneficiary, benId, setBenId, setTransferSuccess} = useContext(CustomerContext)
+  const {customers, custInfo, amount, setAmount, setBeneficiary, beneficiary, benId, setBenId, setTransferSuccess} = useContext(CustomerContext)
   const [show, setShow] = useState(false)
  
   const handleSelection = () => {
     const data = customers.find(doc => doc.id === benId)
     setBeneficiary({name: data.name, accountNumber: data.account['accountId'], balance: data.account['balance']})
     setShow(true)
-
   }
 
   const handleClose = (e) => {
@@ -33,13 +32,13 @@ function Transfer() {
       let updateddebitInfo = {name: beneficiary.name, transactionAccount: beneficiary.accountNumber, amount: amount, type: 'debit', date: new Date().toDateString()}
       let updatedCreditInfo = {name: custInfo.name, transactionAccount: custInfo.account['accountId'], amount: amount, type: 'credit', date: new Date().toDateString()}
       update(newBal, beneNewBal, updateddebitInfo, updatedCreditInfo)
-     
     }
     else{
-      setIsOpen(true)
-      setMessage("You can not make this transaction, insufficient funds")
+      alert("You can not make this transaction, insufficient funds")
     }
     setAmount('') 
+    navigate('/customers')
+    
   };
   
   const update = (newBal, beneAccBal, debitInfo, creditInfo) => {

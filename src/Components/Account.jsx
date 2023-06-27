@@ -8,10 +8,11 @@ import Transaction from './Transaction'
 
 function Account() {
   const navigate = useNavigate()
-  const {custInfo, setIsOpen, setMessage, customers} = useContext(CustomerContext)
+  const {custInfo, setIsOpen, setMessage, customers, setTitle} = useContext(CustomerContext)
 
   const handleClick = (e) => {
     setIsOpen(true)
+    setTitle("Your Account Balance is")
     setMessage(`NGN ${custInfo.account['balance']}`)
   };
   

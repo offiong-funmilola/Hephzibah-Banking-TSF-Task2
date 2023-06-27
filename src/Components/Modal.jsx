@@ -3,7 +3,7 @@ import {useContext} from 'react'
 import CustomerContext from '../Context/CustomerContext'
 
 function Modal() {
-  const {setIsOpen, isOpen, message} = useContext(CustomerContext);
+  const {setIsOpen, isOpen, message, title} = useContext(CustomerContext);
 
   const handleClose = (e) => {
       setIsOpen(false)
@@ -13,7 +13,7 @@ function Modal() {
     <div className={`modal ${isOpen ? 'modal-open': ''}`}>
         <div className='modal-box relative'>
             <div className="btn btn-sm btn-circle absolute right-2 top-2" onClick={handleClose}>✕</div>
-            <h3 className="text-lg font-bold">Your Account Balance</h3>
+            <h3 className="text-lg font-bold">{title}</h3>
             <p className="py-4">{message}</p>
         </div>
     </div>
